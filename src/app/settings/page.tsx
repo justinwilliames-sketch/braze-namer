@@ -107,7 +107,18 @@ export default function SettingsPage() {
                     key={v}
                     className="inline-flex items-center gap-1.5 rounded-md border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-950 px-2.5 py-1 text-sm text-neutral-700 dark:text-neutral-300"
                   >
-                    {v}
+                    {dim.labels?.[v] ? (
+                      <>
+                        <span className="text-neutral-500 dark:text-neutral-400">
+                          {dim.labels[v]}
+                        </span>
+                        <span className="font-mono text-xs text-neutral-900 dark:text-neutral-200">
+                          {v}
+                        </span>
+                      </>
+                    ) : (
+                      v
+                    )}
                     <button
                       onClick={() => removeValue(dim.key, v)}
                       className="text-neutral-400 hover:text-red-500 transition-colors"

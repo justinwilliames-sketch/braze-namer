@@ -60,7 +60,7 @@ export default function GeneratorPage() {
                     <option value="">—</option>
                     {dim.values?.map((v) => (
                       <option key={v} value={v}>
-                        {v}
+                        {dim.labels?.[v] ? `${dim.labels[v]} (${v})` : v}
                       </option>
                     ))}
                   </select>

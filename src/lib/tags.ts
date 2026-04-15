@@ -130,6 +130,37 @@ const TAG_RULES: Record<string, Record<string, { primary: string; children: stri
   },
 };
 
+// Region tags derived from country code
+const REGION_MAP: Record<string, { region: string; market: string }> = {
+  AU: { region: "APAC", market: "ANZ" },
+  NZ: { region: "APAC", market: "ANZ" },
+  JP: { region: "APAC", market: "North Asia" },
+  KR: { region: "APAC", market: "North Asia" },
+  HK: { region: "APAC", market: "Greater China" },
+  SG: { region: "APAC", market: "SEA" },
+  IN: { region: "APAC", market: "South Asia" },
+  US: { region: "Americas", market: "North America" },
+  CA: { region: "Americas", market: "North America" },
+  MX: { region: "Americas", market: "LatAm" },
+  BR: { region: "Americas", market: "LatAm" },
+  GB: { region: "EMEA", market: "UK & Ireland" },
+  IE: { region: "EMEA", market: "UK & Ireland" },
+  DE: { region: "EMEA", market: "DACH" },
+  FR: { region: "EMEA", market: "Western Europe" },
+  IT: { region: "EMEA", market: "Southern Europe" },
+  ES: { region: "EMEA", market: "Southern Europe" },
+  PT: { region: "EMEA", market: "Southern Europe" },
+  NL: { region: "EMEA", market: "Western Europe" },
+  SE: { region: "EMEA", market: "Nordics" },
+  NO: { region: "EMEA", market: "Nordics" },
+  DK: { region: "EMEA", market: "Nordics" },
+  FI: { region: "EMEA", market: "Nordics" },
+  PL: { region: "EMEA", market: "CEE" },
+  AE: { region: "EMEA", market: "GCC" },
+  ZA: { region: "EMEA", market: "Africa" },
+  GLOBAL: { region: "Global", market: "All Markets" },
+};
+
 // Cross-dimensional smart tags: when certain combinations appear together
 const COMBO_TAGS: { match: Record<string, string>; tags: TagGroup }[] = [
   {
@@ -165,6 +196,52 @@ export function getRecommendedTags(
     if (rule && !seen.has(rule.primary)) {
       seen.add(rule.primary);
       groups.push({ primary: rule.primary, children: rule.children });
+    }
+  }
+
+  // Country → region tag
+  const countryCode = selections.country?.toUpperCase();
+  if (countryCode && REGION_MAP[countryCode]) {
+    const r = REGION_MAP[countryCode];
+    const primary = `${r.region} Region`;
+    if (!seen.has(primary)) {
+      seen.add(primary);
+      groups.push({
+        primary,
+        children: [r.market, countryCode].filter(Boolean),
+      });
+    }
+  }
+
+  // Language tag
+  const lang = selections.language?.toLowerCase();
+  const LANG_NAMES: Record<string, string> = {
+    en: "English",
+    es: "Spanish",
+    fr: "French",
+    de: "German",
+    it: "Italian",
+    pt: "Portuguese",
+    nl: "Dutch",
+    sv: "Swedish",
+    no: "Norwegian",
+    da: "Danish",
+    fi: "Finnish",
+    pl: "Polish",
+    ja: "Japanese",
+    ko: "Korean",
+    zh: "Chinese",
+    ar: "Arabic",
+    hi: "Hindi",
+  };
+  if (lang && LANG_NAMES[lang]) {
+    const primary = `Localisation`;
+    if (!seen.has(primary)) {
+      seen.add(primary);
+      groups.push({
+        primary,
+        children: [LANG_NAMES[lang], lang.toUpperCase()],
+      });
     }
   }
 
