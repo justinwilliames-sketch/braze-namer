@@ -6,7 +6,7 @@ import { TagGroup } from "@/lib/tags";
 function CopyFlash({ show }: { show: boolean }) {
   if (!show) return null;
   return (
-    <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs bg-neutral-800 text-white px-2 py-0.5 rounded whitespace-nowrap">
+    <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-2 py-0.5 rounded whitespace-nowrap shadow-lg">
       Copied!
     </span>
   );
@@ -28,11 +28,11 @@ function TagChip({
   };
 
   const base =
-    "relative inline-flex items-center cursor-pointer select-none transition-colors text-sm rounded-md border";
+    "relative inline-flex items-center cursor-pointer select-none transition-all text-sm rounded-lg border font-medium";
   const styles =
     variant === "primary"
-      ? "bg-neutral-900 text-white border-neutral-900 px-3 py-1.5 font-medium hover:bg-neutral-700"
-      : "bg-white text-neutral-700 border-neutral-300 px-2.5 py-1 hover:bg-neutral-100";
+      ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 border-transparent px-3.5 py-1.5 hover:opacity-90"
+      : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 px-3 py-1 hover:border-fuchsia-500 hover:text-fuchsia-600 dark:hover:text-fuchsia-400";
 
   return (
     <button onClick={copy} className={`${base} ${styles}`}>
@@ -46,20 +46,27 @@ export default function TagTiles({ groups }: { groups: TagGroup[] }) {
   if (groups.length === 0) return null;
 
   return (
-    <div className="mt-8">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-neutral-400 mb-4">
-        Recommended Tags
-        <span className="ml-2 font-normal normal-case tracking-normal text-neutral-400">
-          — click to copy
+    <div className="mt-10">
+      <div className="flex items-baseline gap-2 mb-5">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
+          Recommended Tags
+        </h3>
+        <span className="text-xs text-neutral-400 dark:text-neutral-500">
+          click any tag to copy
         </span>
-      </h3>
+      </div>
       <div className="space-y-3">
         {groups.map((g) => (
-          <div key={g.primary} className="flex flex-wrap items-center gap-2">
+          <div
+            key={g.primary}
+            className="flex flex-wrap items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3"
+          >
             <TagChip label={g.primary} variant="primary" />
             {g.children.length > 0 && (
               <>
-                <span className="text-neutral-300 text-sm">›</span>
+                <span className="text-neutral-300 dark:text-neutral-600 text-sm mx-1">
+                  ›
+                </span>
                 {g.children.map((c) => (
                   <TagChip key={c} label={c} variant="child" />
                 ))}

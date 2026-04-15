@@ -1,7 +1,7 @@
 export interface DimensionConfig {
   key: string;
   label: string;
-  type: "select" | "text";
+  type: "select" | "text" | "date";
   values?: string[];
 }
 
@@ -62,4 +62,5 @@ export const DEFAULT_DIMENSIONS: DimensionConfig[] = [
   { key: "version", label: "Version", type: "text" },
   { key: "step", label: "Step / Day", type: "text" },
   { key: "variant", label: "Variant", type: "text" },
+  { key: "deployment_date", label: "Deployment Date", type: "date" },
 ];

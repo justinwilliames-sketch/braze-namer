@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import Nav from "@/components/nav";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrains = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Braze Namer",
-  description: "Naming convention generator for Braze assets",
+  title: "Brazenamer — Naming Convention Generator",
+  description: "Generate consistent naming conventions for your Braze assets.",
 };
 
 export default function RootLayout({
@@ -24,8 +25,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen bg-white text-neutral-900 font-sans antialiased">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${jakarta.variable} ${jetbrains.variable}`}
+    >
+      <head>
+        <script
+          // Prevent dark-mode flash on first load
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                try {
+                  var d = document.documentElement;
+                  var m = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  d.classList.toggle('dark', m);
+                } catch(e){}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 font-sans antialiased">
         <Nav />
         {children}
       </body>

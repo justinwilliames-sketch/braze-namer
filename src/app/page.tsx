@@ -1,20 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { loadDimensions } from "@/lib/storage";
-import { DimensionConfig } from "@/lib/defaults";
+import { useState, useCallback } from "react";
 import { buildName } from "@/lib/name-builder";
 import { getRecommendedTags, TagGroup } from "@/lib/tags";
 import TagTiles from "@/components/tag-tiles";
+import { useUser } from "@/lib/use-user";
 
 export default function GeneratorPage() {
-  const [dimensions, setDimensions] = useState<DimensionConfig[]>([]);
+  const { user, loading } = useUser();
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    setDimensions(loadDimensions());
-  }, []);
 
   const update = useCallback(
     (key: string, value: string) =>
@@ -24,6 +19,9 @@ export default function GeneratorPage() {
 
   const reset = () => setSelections({});
 
+  if (loading || !user) return null;
+
+  const dimensions = user.config;
   const name = buildName(dimensions, selections);
   const tags: TagGroup[] = getRecommendedTags(selections);
 
@@ -34,77 +32,111 @@ export default function GeneratorPage() {
     setTimeout(() => setCopied(false), 1500);
   };
 
-  if (dimensions.length === 0) return null;
-
   return (
-    <div className="max-w-2xl mx-auto px-6 py-12">
-      <h1 className="text-2xl font-bold mb-1">Name Generator</h1>
-      <p className="text-sm text-neutral-500 mb-8">
-        Build a Braze naming convention string.
-      </p>
+    <div className="max-w-3xl mx-auto px-6 py-12">
+      <div className="mb-10">
+        <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
+          Name Generator
+        </h1>
+        <p className="text-neutral-500 dark:text-neutral-400">
+          Build a consistent naming string for any Braze asset.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-8">
-        {dimensions.map((dim) =>
-          dim.type === "select" ? (
-            <label key={dim.key} className="block">
-              <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">
-                {dim.label}
-              </span>
-              <select
-                value={selections[dim.key] ?? ""}
-                onChange={(e) => update(dim.key, e.target.value)}
-                className="mt-1 block w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900"
-              >
-                <option value="">—</option>
-                {dim.values?.map((v) => (
-                  <option key={v} value={v}>
-                    {v}
-                  </option>
-                ))}
-              </select>
-            </label>
-          ) : (
-            <label key={dim.key} className="block">
-              <span className="text-xs font-medium text-neutral-600 uppercase tracking-wide">
-                {dim.label}
-              </span>
-              <input
-                type="text"
-                placeholder={dim.label}
-                value={selections[dim.key] ?? ""}
-                onChange={(e) => update(dim.key, e.target.value)}
-                className="mt-1 block w-full rounded-md border border-neutral-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900"
-              />
-            </label>
-          )
-        )}
+      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 md:p-8 mb-8 shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {dimensions.map((dim) => {
+            if (dim.type === "select") {
+              return (
+                <label key={dim.key} className="block">
+                  <span className="text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">
+                    {dim.label}
+                  </span>
+                  <select
+                    value={selections[dim.key] ?? ""}
+                    onChange={(e) => update(dim.key, e.target.value)}
+                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                  >
+                    <option value="">—</option>
+                    {dim.values?.map((v) => (
+                      <option key={v} value={v}>
+                        {v}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              );
+            }
+            if (dim.type === "date") {
+              return (
+                <label key={dim.key} className="block">
+                  <span className="text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wide inline-flex items-center gap-1.5">
+                    {dim.label}
+                    <span
+                      className="group relative inline-flex h-4 w-4 items-center justify-center rounded-full border border-neutral-400 dark:border-neutral-600 text-[10px] font-bold text-neutral-500 dark:text-neutral-400 cursor-help"
+                      tabIndex={0}
+                    >
+                      ?
+                      <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-64 -translate-x-1/2 rounded-md bg-neutral-900 text-white text-xs font-normal normal-case tracking-normal px-3 py-2 shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+                        If you&rsquo;re using Braze&rsquo;s built-in versioning,
+                        you don&rsquo;t need a date — Braze tracks revisions
+                        automatically. Only add a date if you&rsquo;re creating
+                        a new Canvas or Campaign per version.
+                      </span>
+                    </span>
+                  </span>
+                  <input
+                    type="date"
+                    value={selections[dim.key] ?? ""}
+                    onChange={(e) => update(dim.key, e.target.value)}
+                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                  />
+                </label>
+              );
+            }
+            return (
+              <label key={dim.key} className="block">
+                <span className="text-xs font-semibold text-neutral-600 dark:text-neutral-400 uppercase tracking-wide">
+                  {dim.label}
+                </span>
+                <input
+                  type="text"
+                  placeholder={dim.label}
+                  value={selections[dim.key] ?? ""}
+                  onChange={(e) => update(dim.key, e.target.value)}
+                  className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                />
+              </label>
+            );
+          })}
+        </div>
       </div>
 
       {/* Output */}
-      <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-medium text-neutral-400 uppercase tracking-wide">
+      <div className="rounded-2xl border border-neutral-900 dark:border-fuchsia-500/30 bg-neutral-900 dark:bg-neutral-950 p-6">
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">
             Output
           </span>
           <div className="flex gap-2">
             <button
               onClick={reset}
-              className="text-xs text-neutral-500 hover:text-neutral-800 transition-colors"
+              className="text-xs text-neutral-400 hover:text-white transition-colors px-2 py-1"
             >
               Reset
             </button>
             <button
               onClick={copyName}
               disabled={!name}
-              className="text-xs font-medium text-neutral-900 bg-white border border-neutral-300 rounded px-3 py-1 hover:bg-neutral-100 disabled:opacity-30 transition-colors"
+              className="text-xs font-semibold bg-fuchsia-500 text-white rounded-md px-3 py-1.5 hover:bg-fuchsia-400 disabled:opacity-30 disabled:hover:bg-fuchsia-500 transition-colors"
             >
               {copied ? "Copied!" : "Copy"}
             </button>
           </div>
         </div>
-        <code className="block font-mono text-base text-neutral-900 break-all min-h-[1.5rem]">
+        <code className="block font-mono text-base md:text-lg text-white break-all min-h-[1.75rem]">
           {name || (
-            <span className="text-neutral-300">
+            <span className="text-neutral-600">
               Make selections above…
             </span>
           )}
