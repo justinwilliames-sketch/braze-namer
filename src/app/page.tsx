@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { buildName } from "@/lib/name-builder";
 import { getRecommendedTags, TagGroup } from "@/lib/tags";
 import TagTiles from "@/components/tag-tiles";
+import Flame from "@/components/flame";
 import { useUser } from "@/lib/use-user";
 
 export default function GeneratorPage() {
@@ -34,13 +35,16 @@ export default function GeneratorPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
-      <div className="mb-10">
-        <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
-          Name Generator
-        </h1>
-        <p className="text-neutral-500 dark:text-neutral-400">
-          Build a consistent naming string for any Braze asset.
-        </p>
+      <div className="mb-10 flex items-start gap-4">
+        <Flame className="w-10 h-10 text-fuchsia-500 shrink-0 mt-1" />
+        <div>
+          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
+            Name Generator
+          </h1>
+          <p className="text-neutral-500 dark:text-neutral-400">
+            Build a consistent naming string for any Braze asset.
+          </p>
+        </div>
       </div>
 
       <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 md:p-8 mb-8 shadow-sm">
