@@ -45,7 +45,10 @@ export async function POST(req: NextRequest) {
     ]
   );
 
-  await setSession(result.rows[0].id);
+  const userId = result.rows[0].id;
+  await query("UPDATE users SET last_login_at = NOW() WHERE id = $1", [userId]);
+  await query("INSERT INTO login_events (user_id) VALUES ($1)", [userId]);
+  await setSession(userId);
 
   return NextResponse.json({ ok: true });
 }

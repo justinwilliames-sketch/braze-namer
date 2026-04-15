@@ -9,6 +9,7 @@ export interface User {
   config: DimensionConfig[];
   theme: "auto" | "light" | "dark";
   secret_question: string;
+  is_admin?: boolean;
 }
 
 export function useUser() {

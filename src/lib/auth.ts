@@ -69,3 +69,14 @@ export async function getSessionFromRequest(
 }
 
 export const SESSION_COOKIE = COOKIE_NAME;
+
+export function getAdminEmail(): string {
+  return (
+    process.env.ADMIN_EMAIL?.toLowerCase() || "justinwilliames@gmail.com"
+  );
+}
+
+export function isAdminEmail(email: string | null | undefined): boolean {
+  if (!email) return false;
+  return email.toLowerCase() === getAdminEmail();
+}

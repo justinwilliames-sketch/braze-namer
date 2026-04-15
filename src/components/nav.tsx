@@ -53,6 +53,18 @@ export default function Nav() {
                     {l.label}
                   </Link>
                 ))}
+                {user.is_admin && (
+                  <Link
+                    href="/admin"
+                    className={`text-sm transition-colors inline-flex items-center gap-1 ${
+                      pathname === "/admin"
+                        ? "text-fuchsia-600 dark:text-fuchsia-400 font-semibold"
+                        : "text-fuchsia-500 hover:text-fuchsia-700 dark:text-fuchsia-400 dark:hover:text-fuchsia-300"
+                    }`}
+                  >
+                    Admin
+                  </Link>
+                )}
                 <button
                   onClick={logout}
                   className="text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"

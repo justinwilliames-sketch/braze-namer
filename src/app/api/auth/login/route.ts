@@ -30,6 +30,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  await query("UPDATE users SET last_login_at = NOW() WHERE id = $1", [user.id]);
+  await query("INSERT INTO login_events (user_id) VALUES ($1)", [user.id]);
   await setSession(user.id);
   return NextResponse.json({ ok: true });
 }

@@ -32,8 +32,26 @@ export async function initDb() {
       secret_answer_hash TEXT NOT NULL,
       config JSONB DEFAULT '[]'::jsonb,
       theme TEXT DEFAULT 'auto',
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      last_login_at TIMESTAMPTZ
+    );
+  `);
+  // Backfill column for older databases
+  await pool.query(`
+    ALTER TABLE users ADD COLUMN IF NOT EXISTS last_login_at TIMESTAMPTZ;
+  `);
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS login_events (
+      id BIGSERIAL PRIMARY KEY,
+      user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       created_at TIMESTAMPTZ DEFAULT NOW()
     );
+  `);
+  await pool.query(`
+    CREATE INDEX IF NOT EXISTS login_events_user_id_idx ON login_events(user_id);
+  `);
+  await pool.query(`
+    CREATE INDEX IF NOT EXISTS login_events_created_at_idx ON login_events(created_at);
   `);
   initialised = true;
 }

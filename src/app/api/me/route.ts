@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
+import { getSession, isAdminEmail } from "@/lib/auth";
 import { query } from "@/lib/db";
 import { DimensionConfig } from "@/lib/defaults";
 
@@ -25,5 +25,9 @@ export async function GET() {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json(result.rows[0]);
+  const user = result.rows[0];
+  return NextResponse.json({
+    ...user,
+    is_admin: isAdminEmail(user.email),
+  });
 }
