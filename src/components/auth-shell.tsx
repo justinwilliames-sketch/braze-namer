@@ -14,7 +14,7 @@ export default function AuthShell({
   footer?: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-neutral-50 dark:bg-neutral-950">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-white dark:bg-[#0A0A0B]">
       <div className="w-full max-w-md">
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -22,10 +22,10 @@ export default function AuthShell({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/orbit-icon-white.png" alt="Orbit" width={28} height={28} className="hidden dark:block" />
           <span className="text-2xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-            Orbit Namer
+            Orbit
           </span>
         </Link>
-        <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-8 shadow-sm">
+        <div className="bg-neutral-50/50 dark:bg-white/[0.02] border border-neutral-200/60 dark:border-white/[0.06] rounded-xl p-8">
           <h1 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">
             {title}
           </h1>

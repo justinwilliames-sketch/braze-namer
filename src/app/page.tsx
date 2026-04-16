@@ -47,7 +47,7 @@ export default function GeneratorPage() {
     <div className="max-w-6xl mx-auto px-6 py-12">
       {/* Support banner */}
       {!bannerDismissed && (
-        <div className="mb-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 px-5 py-3 flex items-center justify-between gap-4">
+        <div className="mb-6 rounded-xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] px-5 py-3 flex items-center justify-between gap-4">
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
             Orbit Namer is free. If it saves you time, consider supporting development.
           </p>
@@ -87,7 +87,7 @@ export default function GeneratorPage() {
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Left: form */}
         <div className="flex-1 min-w-0">
-          <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-sm">
+          <div className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02]p-6 shadow-sm">
             <div className="flex items-center justify-between mb-5">
               <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
                 Dimensions

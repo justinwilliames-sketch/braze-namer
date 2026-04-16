@@ -32,7 +32,7 @@ function TagChip({
   const styles =
     variant === "primary"
       ? "bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 border-transparent px-3.5 py-1.5 hover:opacity-90"
-      : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-200 dark:border-neutral-700 px-3 py-1 hover:border-neutral-900 dark:border-white hover:text-neutral-600 dark:hover:text-neutral-300";
+      : "bg-white dark:bg-[#0A0A0B] text-neutral-600 dark:text-neutral-400 border-neutral-200/60 dark:border-white/[0.06] px-3 py-1 hover:border-neutral-400 dark:hover:border-white/[0.12] hover:text-neutral-900 dark:hover:text-white";
 
   return (
     <button onClick={copy} className={`${base} ${styles}`}>
@@ -59,7 +59,7 @@ export default function TagTiles({ groups }: { groups: TagGroup[] }) {
         {groups.map((g) => (
           <div
             key={g.primary}
-            className="flex flex-wrap items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-3"
+            className="flex flex-wrap items-center gap-2 rounded-xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-3"
           >
             <TagChip label={g.primary} variant="primary" />
             {g.children.length > 0 && (
