@@ -57,10 +57,10 @@ export default function GeneratorPage() {
   }
 
   return (
-    <div className="max-w-[1080px] mx-auto px-6 py-12">
+    <div className="max-w-[1080px] mx-auto px-4 sm:px-6 py-6 sm:py-12">
       {/* Support banner */}
       {!bannerDismissed && (
-        <div className="mb-6 rounded-xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] px-5 py-3 flex items-center justify-between gap-4">
+        <div className="mb-4 sm:mb-6 rounded-xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
             Orbit Namer is free. If it saves you time, consider supporting development.
           </p>
@@ -84,25 +84,25 @@ export default function GeneratorPage() {
       )}
 
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-600 mb-2">
           Orbit Web App
         </p>
-        <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
           Orbit Namer
         </h1>
-        <p className="text-neutral-500 dark:text-neutral-400">
+        <p className="text-sm sm:text-base text-neutral-500 dark:text-neutral-400">
           Build a consistent naming string for any Braze asset.
-          {!user && <span className="text-xs ml-2 text-neutral-400 dark:text-neutral-600">Sign in to save custom fields.</span>}
+          {!user && <span className="block sm:inline text-xs mt-1 sm:mt-0 sm:ml-2 text-neutral-400 dark:text-neutral-600">Sign in to save custom fields.</span>}
         </p>
       </div>
 
       {/* Desktop: side-by-side · Mobile: stacked */}
-      <div className="flex flex-col lg:flex-row gap-6 items-start">
+      <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-start">
         {/* Left: form */}
-        <div className="flex-1 min-w-0">
-          <div className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-6 shadow-sm">
-            <div className="flex items-center justify-between mb-5">
+        <div className="flex-1 min-w-0 w-full">
+          <div className="rounded-xl sm:rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-4 sm:p-6">
+            <div className="flex items-center justify-between mb-4 sm:mb-5">
               <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
                 Dimensions
               </span>
@@ -187,9 +187,9 @@ export default function GeneratorPage() {
         </div>
 
         {/* Right: output + tags (sticky on desktop) */}
-        <div className="w-full lg:w-[380px] lg:sticky lg:top-16 shrink-0">
+        <div className="w-full lg:w-[380px] lg:sticky lg:top-14 shrink-0">
           {/* Output */}
-          <div className="rounded-2xl border border-neutral-900 dark:border-white/10 bg-neutral-900 dark:bg-[#111113] p-6">
+          <div className="rounded-xl sm:rounded-2xl border border-neutral-900 dark:border-white/10 bg-neutral-900 dark:bg-[#111113] p-4 sm:p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">
                 Output
