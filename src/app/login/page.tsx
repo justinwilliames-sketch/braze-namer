@@ -34,7 +34,7 @@ export default function LoginPage() {
   return (
     <AuthShell
       title="Sign in"
-      subtitle="Welcome back to Orbit Braze Namer."
+      subtitle="Welcome back to Orbit Namer."
       footer={
         <>
           Don&rsquo;t have an account?{" "}

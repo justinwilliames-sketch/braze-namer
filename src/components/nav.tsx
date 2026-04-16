@@ -38,7 +38,7 @@ export default function Nav() {
               <img src="/orbit-icon-dark.png" alt="Orbit" width={22} height={22} className="dark:hidden" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/orbit-icon-white.png" alt="Orbit" width={22} height={22} className="hidden dark:block" />
-              Braze Namer
+              Orbit Namer
             </Link>
             {user && (
               <>

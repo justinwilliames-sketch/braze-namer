@@ -38,7 +38,7 @@ export default function GeneratorPage() {
       <div className="mb-10">
         <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-600 mb-2">Orbit Web App</p>
         <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
-          Braze Namer
+          Orbit Namer
         </h1>
         <p className="text-neutral-500 dark:text-neutral-400">
           Build a consistent naming string for any Braze asset.

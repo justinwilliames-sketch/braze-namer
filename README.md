@@ -1,4 +1,4 @@
-# Orbit Braze Namer
+# Orbit Namer
 
 Generate consistent naming conventions for any Braze asset — Canvases, campaigns, segments, templates, and Content Blocks. Includes smart tag recommendations based on your selections.
 

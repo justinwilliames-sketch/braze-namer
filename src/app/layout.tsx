@@ -15,7 +15,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orbit Braze Namer — Naming Convention Generator",
+  title: "Orbit Namer — Naming Convention Generator",
   description: "Generate consistent naming conventions for your Braze assets. An Orbit web app.",
   icons: { icon: "/orbit-icon.png", apple: "/orbit-icon.png" },
 };

@@ -22,7 +22,7 @@ export default function AuthShell({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/orbit-icon-white.png" alt="Orbit" width={28} height={28} className="hidden dark:block" />
           <span className="text-2xl font-extrabold tracking-tight text-neutral-900 dark:text-white">
-            Braze Namer
+            Orbit Namer
           </span>
         </Link>
         <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-8 shadow-sm">
