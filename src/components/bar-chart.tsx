@@ -68,7 +68,7 @@ export default function BarChart({
                 width={w}
                 height={h}
                 rx={2}
-                className="fill-fuchsia-500"
+                className="fill-neutral-900 dark:fill-white"
               >
                 <title>{`${d.bucket}: ${d.users} user${d.users === 1 ? "" : "s"}`}</title>
               </rect>

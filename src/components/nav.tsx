@@ -16,7 +16,6 @@ export default function Nav() {
   const router = useRouter();
   const { user } = useUser();
 
-  // Hide nav on auth pages
   const isAuthPage = ["/login", "/signup", "/forgot"].includes(pathname);
 
   const logout = async () => {
@@ -29,14 +28,17 @@ export default function Nav() {
     <>
       <ThemeProvider pref={user?.theme} />
       {!isAuthPage && (
-        <nav className="border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
+        <nav className="border-b border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-950/65 backdrop-blur-xl">
           <div className="max-w-3xl mx-auto px-6 flex items-center h-14 gap-6">
             <Link
               href="/"
-              className="text-base font-extrabold tracking-tight text-neutral-900 dark:text-white mr-auto"
+              className="flex items-center gap-2 text-base font-extrabold tracking-tight text-neutral-900 dark:text-white mr-auto"
             >
-              Brazenamer
-              <span className="text-fuchsia-500">.</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/orbit-icon-dark.png" alt="Orbit" width={22} height={22} className="dark:hidden" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/orbit-icon-white.png" alt="Orbit" width={22} height={22} className="hidden dark:block" />
+              Braze Namer
             </Link>
             {user && (
               <>
@@ -58,8 +60,8 @@ export default function Nav() {
                     href="/admin"
                     className={`text-sm transition-colors inline-flex items-center gap-1 ${
                       pathname === "/admin"
-                        ? "text-fuchsia-600 dark:text-fuchsia-400 font-semibold"
-                        : "text-fuchsia-500 hover:text-fuchsia-700 dark:text-fuchsia-400 dark:hover:text-fuchsia-300"
+                        ? "text-neutral-900 dark:text-white font-semibold"
+                        : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
                     }`}
                   >
                     Admin
@@ -73,6 +75,12 @@ export default function Nav() {
                 </button>
               </>
             )}
+            <a
+              href="https://yourorbit.team"
+              className="text-xs text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            >
+              yourorbit.team
+            </a>
           </div>
         </nav>
       )}

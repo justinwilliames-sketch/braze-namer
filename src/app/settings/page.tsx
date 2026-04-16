@@ -221,12 +221,12 @@ export default function SettingsPage() {
                         if (e.key === "Enter") saveLabel(dim.key);
                         if (e.key === "Escape") setEditingLabel(null);
                       }}
-                      className="flex-1 bg-white dark:bg-neutral-900 rounded border border-fuchsia-500 px-2 py-1 text-sm focus:outline-none"
+                      className="flex-1 bg-white dark:bg-neutral-900 rounded border border-neutral-900 dark:border-white px-2 py-1 text-sm focus:outline-none"
                     />
                   ) : (
                     <button
                       onClick={() => startEditLabel(dim)}
-                      className="text-sm font-medium text-neutral-900 dark:text-white hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors"
+                      className="text-sm font-medium text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
                       title="Click to rename"
                     >
                       {dim.label}
@@ -236,7 +236,7 @@ export default function SettingsPage() {
                     {dim.type}
                   </span>
                   {!isDefault && (
-                    <span className="text-[10px] uppercase tracking-wider text-fuchsia-600 dark:text-fuchsia-400 font-semibold">
+                    <span className="text-[10px] uppercase tracking-wider text-neutral-900 dark:text-white font-semibold">
                       Custom
                     </span>
                   )}
@@ -267,7 +267,7 @@ export default function SettingsPage() {
                 setNewField((f) => ({ ...f, label: e.target.value }))
               }
               onKeyDown={(e) => e.key === "Enter" && addField()}
-              className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+              className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
             />
             <select
               value={newField.type}
@@ -277,7 +277,7 @@ export default function SettingsPage() {
                   type: e.target.value as "select" | "text" | "date",
                 }))
               }
-              className="rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+              className="rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
             >
               <option value="select">Dropdown</option>
               <option value="text">Free text</option>
@@ -286,7 +286,7 @@ export default function SettingsPage() {
             <button
               onClick={addField}
               disabled={!newField.label.trim()}
-              className="rounded-md bg-fuchsia-500 text-white px-4 py-1.5 text-sm font-semibold hover:bg-fuchsia-400 disabled:opacity-30 transition-colors"
+              className="rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-1.5 text-sm font-semibold hover:opacity-90 disabled:opacity-30 transition-colors"
             >
               Add field
             </button>
@@ -356,7 +356,7 @@ export default function SettingsPage() {
                       }))
                     }
                     onKeyDown={(e) => e.key === "Enter" && addValue(dim.key)}
-                    className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                    className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                   />
                   <button
                     onClick={() => addValue(dim.key)}

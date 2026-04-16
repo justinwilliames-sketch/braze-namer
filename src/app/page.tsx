@@ -35,16 +35,14 @@ export default function GeneratorPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
-      <div className="mb-10 flex items-start gap-4">
-        <Flame className="w-10 h-10 text-fuchsia-500 shrink-0 mt-1" />
-        <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
-            Name Generator
-          </h1>
-          <p className="text-neutral-500 dark:text-neutral-400">
-            Build a consistent naming string for any Braze asset.
-          </p>
-        </div>
+      <div className="mb-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-neutral-400 dark:text-neutral-600 mb-2">Orbit Web App</p>
+        <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-2">
+          Braze Namer
+        </h1>
+        <p className="text-neutral-500 dark:text-neutral-400">
+          Build a consistent naming string for any Braze asset.
+        </p>
       </div>
 
       <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 md:p-8 mb-8 shadow-sm">
@@ -59,7 +57,7 @@ export default function GeneratorPage() {
                   <select
                     value={selections[dim.key] ?? ""}
                     onChange={(e) => update(dim.key, e.target.value)}
-                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                   >
                     <option value="">—</option>
                     {dim.values?.map((v) => (
@@ -93,7 +91,7 @@ export default function GeneratorPage() {
                     type="date"
                     value={selections[dim.key] ?? ""}
                     onChange={(e) => update(dim.key, e.target.value)}
-                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                    className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                   />
                 </label>
               );
@@ -108,7 +106,7 @@ export default function GeneratorPage() {
                   placeholder={dim.label}
                   value={selections[dim.key] ?? ""}
                   onChange={(e) => update(dim.key, e.target.value)}
-                  className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+                  className="mt-1.5 block w-full rounded-lg border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                 />
               </label>
             );
@@ -117,7 +115,7 @@ export default function GeneratorPage() {
       </div>
 
       {/* Output */}
-      <div className="rounded-2xl border border-neutral-900 dark:border-fuchsia-500/30 bg-neutral-900 dark:bg-neutral-950 p-6">
+      <div className="rounded-2xl border border-neutral-900 dark:border-neutral-900 dark:border-white/30 bg-neutral-900 dark:bg-neutral-950 p-6">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-semibold text-neutral-400 uppercase tracking-wide">
             Output
@@ -132,7 +130,7 @@ export default function GeneratorPage() {
             <button
               onClick={copyName}
               disabled={!name}
-              className="text-xs font-semibold bg-fuchsia-500 text-white rounded-md px-3 py-1.5 hover:bg-fuchsia-400 disabled:opacity-30 disabled:hover:bg-fuchsia-500 transition-colors"
+              className="text-xs font-semibold bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-md px-3 py-1.5 hover:opacity-90 disabled:opacity-30 disabled:hover:opacity-100 transition-colors"
             >
               {copied ? "Copied!" : "Copy"}
             </button>

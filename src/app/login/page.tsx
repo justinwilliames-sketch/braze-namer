@@ -34,11 +34,11 @@ export default function LoginPage() {
   return (
     <AuthShell
       title="Sign in"
-      subtitle="Welcome back to Brazenamer."
+      subtitle="Welcome back to Orbit Braze Namer."
       footer={
         <>
           Don&rsquo;t have an account?{" "}
-          <Link href="/signup" className="text-fuchsia-600 hover:underline">
+          <Link href="/signup" className="text-neutral-900 dark:text-white hover:underline">
             Sign up
           </Link>
         </>
@@ -54,7 +54,7 @@ export default function LoginPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
         </div>
         <div>
@@ -66,7 +66,7 @@ export default function LoginPage() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
         </div>
         {error && (

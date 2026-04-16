@@ -112,7 +112,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setPasswordState((s) => ({ ...s, current: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <input
             type="password"
@@ -123,7 +123,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setPasswordState((s) => ({ ...s, next: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           {passwordState.msg && (
             <p
@@ -158,14 +158,14 @@ export default function AccountPage() {
             onChange={(e) =>
               setSecretState((s) => ({ ...s, current: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <select
             value={secretState.question}
             onChange={(e) =>
               setSecretState((s) => ({ ...s, question: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           >
             {SECRET_QUESTIONS.map((q) => (
               <option key={q} value={q}>
@@ -181,7 +181,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setSecretState((s) => ({ ...s, answer: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
+            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           {secretState.msg && (
             <p
