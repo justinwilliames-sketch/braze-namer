@@ -76,10 +76,16 @@ export default function Nav() {
               </>
             )}
             <a
-              href="https://yourorbit.team"
-              className="text-xs text-neutral-400 dark:text-neutral-600 hover:text-neutral-900 dark:hover:text-white transition-colors"
+              href="https://yourorbit.team/apps"
+              className="text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
             >
-              yourorbit.team
+              More Apps
+            </a>
+            <a
+              href="https://github.com/justinwilliames-sketch/orbit-for-claude-dl/raw/main/orbit-lifecycle-marketing-system-for-claude.mcpb"
+              className="text-xs font-semibold bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-3 py-1.5 rounded-full hover:opacity-90 transition-opacity"
+            >
+              Download Orbit
             </a>
           </div>
         </nav>
