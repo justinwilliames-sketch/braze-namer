@@ -17,11 +17,11 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Orbit Namer — Naming Convention Generator",
-  description: "Generate consistent naming conventions for your Braze assets. An Orbit web app.",
+  title: "Orbit | Namer",
+  description: "Generate consistent naming conventions for your Braze assets.",
   icons: { icon: "/orbit-icon.png", apple: "/orbit-icon.png" },
   openGraph: {
-    title: "Orbit Namer — Naming Convention Generator",
+    title: "Orbit | Namer",
     description: "Generate consistent naming conventions for your Braze assets.",
     url: "https://namer.yourorbit.team",
     images: ["/orbit-icon.png"],
