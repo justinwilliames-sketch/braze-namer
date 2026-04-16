@@ -45,7 +45,6 @@ export default function Nav() {
             <div className="hidden md:flex items-center gap-6">
               <a href={MAIN} className={linkCls}>Home</a>
               <a href={`${MAIN}/apps`} className={linkCls}>Apps</a>
-              <Link href="/" className={pathname === "/" ? activeCls : linkCls}>Namer</Link>
               {user && (
                 <>
                   <Link href="/settings" className={pathname === "/settings" ? activeCls : linkCls}>Settings</Link>
@@ -76,7 +75,6 @@ export default function Nav() {
             <div className="md:hidden border-t border-neutral-200/60 dark:border-white/[0.06] bg-white/95 dark:bg-[#0A0A0B]/95 backdrop-blur-xl px-6 py-4 space-y-3">
               <a href={MAIN} className={mobileCls} onClick={() => setMenuOpen(false)}>Home</a>
               <a href={`${MAIN}/apps`} className={mobileCls} onClick={() => setMenuOpen(false)}>Apps</a>
-              <Link href="/" className={pathname === "/" ? mobileActiveCls : mobileCls} onClick={() => setMenuOpen(false)}>Namer</Link>
               {user && (
                 <>
                   <Link href="/settings" className={pathname === "/settings" ? mobileActiveCls : mobileCls} onClick={() => setMenuOpen(false)}>Settings</Link>
