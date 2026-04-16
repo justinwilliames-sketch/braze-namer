@@ -143,14 +143,14 @@ export default function SettingsPage() {
       </div>
 
       {/* Theme */}
-      <section className="mb-12 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6">
+      <section className="mb-12 rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-6">
         <h2 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">
           Appearance
         </h2>
         <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
           Auto follows your system preference.
         </p>
-        <div className="inline-flex rounded-lg border border-neutral-300 dark:border-neutral-700 p-0.5 bg-neutral-100 dark:bg-neutral-950">
+        <div className="inline-flex rounded-lg border border-neutral-200/60 dark:border-white/[0.06] p-0.5 bg-neutral-100 dark:bg-white/[0.04]">
           {(["auto", "light", "dark"] as const).map((t) => (
             <button
               key={t}
@@ -168,7 +168,7 @@ export default function SettingsPage() {
       </section>
 
       {/* Fields */}
-      <section className="mb-8 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 md:p-8">
+      <section className="mb-8 rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-6 md:p-8">
         <div className="flex items-baseline justify-between mb-2">
           <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
             Fields
@@ -189,7 +189,7 @@ export default function SettingsPage() {
             return (
               <div
                 key={dim.key}
-                className="flex items-center gap-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 px-3 py-2"
+                className="flex items-center gap-2 rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] px-3 py-2"
               >
                 <div className="flex flex-col">
                   <button
@@ -221,7 +221,7 @@ export default function SettingsPage() {
                         if (e.key === "Enter") saveLabel(dim.key);
                         if (e.key === "Escape") setEditingLabel(null);
                       }}
-                      className="flex-1 bg-white dark:bg-neutral-900 rounded border border-neutral-900 dark:border-white px-2 py-1 text-sm focus:outline-none"
+                      className="flex-1 bg-neutral-50/50 dark:bg-white/[0.02] rounded border border-neutral-900 dark:border-white px-2 py-1 text-sm focus:outline-none"
                     />
                   ) : (
                     <button
@@ -254,7 +254,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Add new field */}
-        <div className="rounded-lg border border-dashed border-neutral-300 dark:border-neutral-700 p-4">
+        <div className="rounded-lg border border-dashed border-neutral-200/60 dark:border-white/[0.06] p-4">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-3">
             Add a new field
           </h3>
@@ -267,7 +267,7 @@ export default function SettingsPage() {
                 setNewField((f) => ({ ...f, label: e.target.value }))
               }
               onKeyDown={(e) => e.key === "Enter" && addField()}
-              className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+              className="flex-1 rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
             />
             <select
               value={newField.type}
@@ -277,7 +277,7 @@ export default function SettingsPage() {
                   type: e.target.value as "select" | "text" | "date",
                 }))
               }
-              className="rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+              className="rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
             >
               <option value="select">Dropdown</option>
               <option value="text">Free text</option>
@@ -286,7 +286,7 @@ export default function SettingsPage() {
             <button
               onClick={addField}
               disabled={!newField.label.trim()}
-              className="rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-1.5 text-sm font-semibold hover:opacity-90 disabled:opacity-30 transition-colors"
+              className="rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-1.5 text-sm font-semibold hover:opacity-90 disabled:opacity-30 transition-colors"
             >
               Add field
             </button>
@@ -295,7 +295,7 @@ export default function SettingsPage() {
       </section>
 
       {/* Values for dropdowns */}
-      <section className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 md:p-8">
+      <section className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-6 md:p-8">
         <h2 className="text-sm font-bold text-neutral-900 dark:text-white mb-1">
           Dropdown values
         </h2>
@@ -315,7 +315,7 @@ export default function SettingsPage() {
                     dim.values.map((v) => (
                       <span
                         key={v}
-                        className="inline-flex items-center gap-1.5 rounded-md border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-950 px-2.5 py-1 text-sm text-neutral-700 dark:text-neutral-300"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 bg-neutral-50/50 dark:bg-white/[0.02] px-2.5 py-1 text-sm text-neutral-700 dark:text-neutral-300"
                       >
                         {dim.labels?.[v] ? (
                           <>
@@ -356,11 +356,11 @@ export default function SettingsPage() {
                       }))
                     }
                     onKeyDown={(e) => e.key === "Enter" && addValue(dim.key)}
-                    className="flex-1 rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+                    className="flex-1 rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
                   />
                   <button
                     onClick={() => addValue(dim.key)}
-                    className="rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-3 py-1.5 text-sm font-medium hover:opacity-90 transition-opacity"
+                    className="rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-3 py-1.5 text-sm font-medium hover:opacity-90 transition-opacity"
                   >
                     Add
                   </button>

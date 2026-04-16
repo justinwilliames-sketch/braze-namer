@@ -112,7 +112,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setPasswordState((s) => ({ ...s, current: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <input
             type="password"
@@ -123,7 +123,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setPasswordState((s) => ({ ...s, next: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           {passwordState.msg && (
             <p
@@ -138,7 +138,7 @@ export default function AccountPage() {
           )}
           <button
             type="submit"
-            className="rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+            className="rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium px-4 py-2 text-sm hover:opacity-90 transition-opacity"
           >
             Update password
           </button>
@@ -158,14 +158,14 @@ export default function AccountPage() {
             onChange={(e) =>
               setSecretState((s) => ({ ...s, current: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <select
             value={secretState.question}
             onChange={(e) =>
               setSecretState((s) => ({ ...s, question: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           >
             {SECRET_QUESTIONS.map((q) => (
               <option key={q} value={q}>
@@ -181,7 +181,7 @@ export default function AccountPage() {
             onChange={(e) =>
               setSecretState((s) => ({ ...s, answer: e.target.value }))
             }
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           {secretState.msg && (
             <p
@@ -196,7 +196,7 @@ export default function AccountPage() {
           )}
           <button
             type="submit"
-            className="rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium px-4 py-2 text-sm hover:opacity-90 transition-opacity"
+            className="rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium px-4 py-2 text-sm hover:opacity-90 transition-opacity"
           >
             Update secret question
           </button>

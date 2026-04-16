@@ -57,7 +57,7 @@ export default function SignupPage() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
         </div>
         <div>
@@ -70,7 +70,7 @@ export default function SignupPage() {
             minLength={8}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <p className="text-xs text-neutral-400 mt-1">
             At least 8 characters.
@@ -83,7 +83,7 @@ export default function SignupPage() {
           <select
             value={secretQuestion}
             onChange={(e) => setSecretQuestion(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           >
             {SECRET_QUESTIONS.map((q) => (
               <option key={q} value={q}>
@@ -101,7 +101,7 @@ export default function SignupPage() {
             required
             value={secretAnswer}
             onChange={(e) => setSecretAnswer(e.target.value)}
-            className="w-full rounded-md border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
+            className="w-full rounded-lg border border-neutral-200/60 dark:border-white/[0.06] bg-white dark:bg-[#0A0A0B] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white"
           />
           <p className="text-xs text-neutral-400 mt-1">
             Used only for password reset. Case-insensitive.
@@ -113,7 +113,7 @@ export default function SignupPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium py-2 text-sm hover:opacity-90 disabled:opacity-50 transition-opacity"
+          className="w-full rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium py-2 text-sm hover:opacity-90 disabled:opacity-50 transition-opacity"
         >
           {loading ? "Creating account…" : "Create account"}
         </button>

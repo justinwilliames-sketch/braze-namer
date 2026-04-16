@@ -100,15 +100,15 @@ export default function AdminPage() {
       </div>
 
       {/* Users table */}
-      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 overflow-hidden">
-        <div className="p-6 border-b border-neutral-200 dark:border-neutral-800">
+      <div className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] overflow-hidden">
+        <div className="p-6 border-b border-neutral-200/60 dark:border-white/[0.06]">
           <h2 className="text-sm font-bold text-neutral-900 dark:text-white">
             Users ({users.length})
           </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 border-b border-neutral-200 dark:border-neutral-800">
+            <thead className="text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 border-b border-neutral-200/60 dark:border-white/[0.06]">
               <tr>
                 <th className="text-left px-6 py-3 font-semibold">Email</th>
                 <th className="text-left px-6 py-3 font-semibold">Joined</th>
@@ -121,7 +121,7 @@ export default function AdminPage() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800">
+            <tbody className="divide-y divide-neutral-200/60 dark:divide-white/[0.06]">
               {users.map((u) => (
                 <tr
                   key={u.id}
@@ -164,7 +164,7 @@ export default function AdminPage() {
 
 function SummaryCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+    <div className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-5">
       <p className="text-xs font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1">
         {label}
       </p>
@@ -185,7 +185,7 @@ function ChartCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
+    <div className="rounded-2xl border border-neutral-200/60 dark:border-white/[0.06] bg-neutral-50/50 dark:bg-white/[0.02] p-5">
       <div className="mb-3">
         <p className="text-sm font-bold text-neutral-900 dark:text-white">
           {title}
