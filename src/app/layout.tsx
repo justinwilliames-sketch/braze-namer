@@ -50,18 +50,6 @@ export default function RootLayout({
       <body className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 font-sans antialiased">
         <Nav />
         {children}
-        <script
-          data-name="BMC-Widget"
-          data-cfasync="false"
-          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-          data-id="justinwilliames"
-          data-description="Support Orbit development"
-          data-message="Orbit Namer is free — if it saves you time, a coffee goes a long way."
-          data-color="#000000"
-          data-position="Right"
-          data-x_margin="18"
-          data-y_margin="18"
-        />
       </body>
     </html>
   );
