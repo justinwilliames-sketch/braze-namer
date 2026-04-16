@@ -76,7 +76,7 @@ export default function Nav() {
               </>
             )}
             <a
-              href="https://yourorbit.team/apps"
+              href="https://get.yourorbit.team/apps"
               className="text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
             >
               More Apps
